@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jugar Fantasy Football - Uno contra Uno</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .background-image {
+      background-image: url('https://www.gannett-cdn.com/presto/2019/12/12/USAT/16f29d26-2da4-4e10-8460-8988f1903eb6-2019-1212-ckk-fantasy-01.JPG');
+      background-size: cover;
+      background-position: center;
+      padding: 50px 20px;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+    }
+
+    .players-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .player-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 15px;
+      padding: 20px;
+      width: 250px;
+      text-align: center;
+    }
+
+    .player-card img {
+      border-radius: 10px;
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .player-name {
+      font-size: 1.25rem;
+      margin-top: 15px;
+    }
+
+    .btn-select {
+      margin-top: 10px;
+      padding: 10px 30px;
+      border-radius: 25px;
+    }
+    
+    h1 {
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Banner -->
+<div class="background-image">
+  <h1 class="display-4 font-weight-bold">¡Selecciona a tus Jugadores!</h1>
+  <p class="lead">Elige a tus jugadores favoritos y compite uno contra uno.</p>
+</div>
+
+<!-- Contenedor de Jugadores -->
+<div class="container mt-5">
+  <div class="players-container">
+    <!-- Tarjeta de Jugador 1 -->
+    <div class="player-card">
+      <img src="https://hips.hearstapps.com/hmg-prod/images/patrick-mahomes-of-the-kansas-city-chiefs-celebrates-prior-news-photo-1707748600.jpg" alt="Jugador 1">
+      <h3 class="player-name">Patrick Mahomes</h3>
+      <button class="btn btn-primary btn-select">Seleccionar</button>
+    </div>
+
+    <!-- Tarjeta de Jugador 2 -->
+    <div class="player-card">
+      <img src="https://media.newyorker.com/photos/66d9fecefe3c705ef45c326c/master/w_2560%2Cc_limit/Helfand-Weekend-AaronR.jpg" alt="Jugador 2">
+      <h3 class="player-name">Aaron Rodgers</h3>
+      <button class="btn btn-primary btn-select">Seleccionar</button>
+    </div>
+
+    <!-- Tarjeta de Jugador 3 -->
+    <div class="player-card">
+      <img src="https://i0.wp.com/cerocero.com.mx/wp-content/uploads/2022/09/Lamar-Jackson.jpg" alt="Jugador 3">
+      <h3 class="player-name">Lamar Jackson</h3>
+      <button class="btn btn-primary btn-select">Seleccionar</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Scripts de Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

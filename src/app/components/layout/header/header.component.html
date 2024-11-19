@@ -1,3 +1,4 @@
+<!-- src/app/components/layout/header/header.component.html -->
 <!doctype html>
 <html lang="en">
 
@@ -51,11 +52,14 @@
     </ul>
 
     <!-- Right Side -->
-    <div class="navbar-collapse collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link" href="#" routerLink="/login">Iniciar sesión</a>
-        </li>
+  <div class="navbar-collapse collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/chat">Chat</a>
+      </li>
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <a class="nav-link" href="#" routerLink="/login">Iniciar sesión</a>
+      </li>
         <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" href="#" routerLink="/account">Crear cuenta</a>
         </li>

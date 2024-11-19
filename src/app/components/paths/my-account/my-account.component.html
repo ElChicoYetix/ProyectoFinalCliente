@@ -4,7 +4,7 @@
       <div class="card-body">
         <h5 class="card-title">Nombre: {{user.name}}</h5>
         <p class="card-text"><strong>Email:</strong> {{user.email}}</p>
-        <p class="card-text"><strong>Token de sesión:</strong> {{authService.getToken()}}</p>
+        <!-- <p class="card-text"><strong>Token de sesión:</strong> {{authService.getToken()}}</p> -->
         <button class="btn btn-danger" (click)="authService.logout()">Cerrar sesión</button>
       </div>
     </div>

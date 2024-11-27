@@ -1,140 +1,110 @@
-// src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
+  private apiUrl = environment.apiUrl;
   private isAuthenticated = new BehaviorSubject<boolean>(false);
   private token: string | null = null;
   private currentUser: any = null;
-  private apiUrl = 'http://localhost:5001/api/users'; // URL de tu API
 
-  constructor(private router: Router) {
-    this.token = localStorage.getItem('authToken');
-    this.isAuthenticated.next(!!this.token);
-  }
-
-  login(email: string, password: string): boolean {
-    const storedUser = environment.users.find(user => user.email === email);
-    if (storedUser && storedUser.password === password) {
-      this.token = this.generateToken();
-      localStorage.setItem('authToken', this.token);
-      this.currentUser = storedUser;
-      this.isAuthenticated.next(true);
-      this.router.navigate(['/home']);
-      return true;
-    }
-    return false;
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   register(name: string, email: string, password: string): boolean {
-    const userExists = environment.users.find(user => user.email === email);
-    if (userExists) {
-      return false;
-    }
+    console.log('Intentando registrar usuario:', { name, email, password });
+    const body = {
+      "name": name,
+      "email": email,
+      "password": password
+    };
     
-    const newUser = { name, email, password };
-    environment.users.push(newUser);
-    this.token = this.generateToken();
-    localStorage.setItem('authToken', this.token);
-    this.currentUser = newUser;
-    this.isAuthenticated.next(true);
-    this.router.navigate(['/home']);
+    this.http.post<any>(`${this.apiUrl}/register`, body).subscribe(
+      (response) => {
+        if (response && response.token) {
+          this.token = response.token;
+          localStorage.setItem('authToken', this.token || ''); // Guardar el token en localStorage
+          this.currentUser = response.user;
+          this.isAuthenticated.next(true);
+          console.log('Registro exitoso. Usuario:', this.currentUser);
+          this.router.navigate(['/home']); // Navegar al inicio si el registro es exitoso
+        } else {
+          console.log('Registro fallido o sin token');
+        }
+      },
+      (error) => {
+        console.error('Error al registrar usuario:', error);
+      }
+    );
+  
     return true;
   }
 
+  login(email: string, password: string): boolean {
+    console.log('Intentando iniciar sesión:', { email, password });
+    const body = {
+      "email": email,
+      "password": password
+    };
+
+    this.http.post<any>(`${this.apiUrl}/login`, body).subscribe(
+      (response) => {
+        if (response && response.token) {
+          this.token = response.token;
+          localStorage.setItem('authToken', this.token || ''); // Guardar el token en localStorage
+          this.currentUser = response.user;
+          this.isAuthenticated.next(true);
+          console.log('Inicio de sesión exitoso. Usuario:', this.currentUser);
+          this.router.navigate(['/home']); // Navegar al inicio si el inicio de sesión es exitoso
+          return true;
+        } else {
+          console.log('Inicio de sesión fallido o sin token');
+          return false;
+        }
+      },
+      (error) => {
+        console.error('Error al iniciar sesión:', error);
+        return false;
+      }
+    );
+    return true;
+  }
+
+  testing(value:string):boolean {
+    if (value == 'si'){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   logout(): void {
+    console.log('Cerrando sesión del usuario:', this.currentUser);
     this.token = null;
     this.currentUser = null;
     localStorage.removeItem('authToken');
     this.isAuthenticated.next(false);
     this.router.navigate(['/login']);
-  }
-
-  generateToken(): string {
-    return Math.random().toString(36).substr(2);
+    console.log('Sesión cerrada y redireccionado a login');
   }
 
   getToken(): string | null {
+    console.log('Obteniendo token:', this.token);
     return this.token;
   }
 
   getUser(): any {
+    console.log('Obteniendo usuario actual:', this.currentUser);
     return this.currentUser;
   }
 
   isLoggedIn(): Observable<boolean> {
+    console.log('Consultando estado de autenticación');
     return this.isAuthenticated.asObservable();
   }
 }
-
-/*
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthService {
-  private isAuthenticated = new BehaviorSubject<boolean>(false);
-  private token: string | null = null;
-  private currentUser: any = null;
-  private apiUrl = 'http://localhost:5001/api/users'; // URL de tu API
-
-  constructor(private http: HttpClient, private router: Router) {
-    this.token = localStorage.getItem('authToken');
-    this.isAuthenticated.next(!!this.token);
-  }
-
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { email, password }).pipe(
-      tap((response: any) => {
-        this.token = response.token;
-        if (this.token) {
-          localStorage.setItem('authToken', this.token);
-        }
-        this.currentUser = response.user;
-        this.isAuthenticated.next(true);
-        this.router.navigate(['/home']);
-      })
-    );
-  }
-
-  register(name: string, email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, { name, email, password }).pipe(
-      tap((response: any) => {
-        this.token = response.token;
-        if (this.token) {
-          localStorage.setItem('authToken', this.token);
-        }
-        this.currentUser = response.user;
-        this.isAuthenticated.next(true);
-        this.router.navigate(['/home']);
-      })
-    );
-  }
-
-  logout(): void {
-    localStorage.removeItem('authToken');
-    this.token = null;
-    this.currentUser = null;
-    this.isAuthenticated.next(false);
-    this.router.navigate(['/login']);
-  }
-
-  getToken(): string | null {
-    return this.token;
-  }
-
-  getUser(): any {
-    return this.currentUser;
-  }
-
-  isLoggedIn(): Observable<boolean> {
-    return this.isAuthenticated.asObservable();
-  }
-}
-*/

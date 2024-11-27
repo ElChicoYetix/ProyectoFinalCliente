@@ -1,3 +1,4 @@
+<!-- src/app/components/layout/header/header.component.html -->
 <!doctype html>
 <html lang="en">
 
@@ -40,22 +41,25 @@
     <!-- Left Side -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/home">Reglas</a>
+        <a class="nav-link" href="#" routerLink="/reglas">Reglas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/home">Crear Liga</a>
+        <a class="nav-link" href="#" routerLink="/liga-beta">Crear Liga</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLink="/home">Ir a Liga</a>
+        <a class="nav-link" href="#" routerLink="/play-beta">Ir a mi Liga</a>
       </li>
     </ul>
 
     <!-- Right Side -->
-    <div class="navbar-collapse collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link" href="#" routerLink="/login">Iniciar sesión</a>
-        </li>
+  <div class="navbar-collapse collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/chat">Chat</a>
+      </li>
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <a class="nav-link" href="#" routerLink="/login">Iniciar sesión</a>
+      </li>
         <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" href="#" routerLink="/account">Crear cuenta</a>
         </li>

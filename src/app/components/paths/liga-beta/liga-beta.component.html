@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ligas - Fantasy NFL</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .background-image {
+      background-image: url('https://nbcsports.brightspotcdn.com/dims4/default/7bd38ee/2147483647/strip/true/crop/2844x1601+224+221/resize/1000x563!/quality/90/?url=https%3A%2F%2Fnbc-sports-production-nbc-sports.s3.us-east-1.amazonaws.com%2Fbrightspot%2F79%2F70%2F5fb6d13f4a47b780fa116d7ae31a%2Fhttps-api-imagn.com%2Frest%2Fdownload%2FimageID%3D24187774');
+      background-size: cover;
+      background-position: center;
+      padding: 50px 20px;
+      border-radius: 10px;
+      color: rgba(255, 255, 255, 0.795);
+      text-align: center;
+    }
+
+    .container-custom {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 10px;
+    }
+
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group input {
+      border-radius: 25px;
+      padding: 10px;
+    }
+
+    .btn-primary, .btn-secondary {
+      border-radius: 25px;
+      padding: 10px 30px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Banner -->
+<div class="background-image">
+  <h1 class="display-4 font-weight-bold">Gestiona tus Ligas</h1>
+</div>
+
+<!-- Sección para Buscar Liga -->
+<div class="container mt-5">
+  <div class="container-custom shadow-lg">
+    <h2>Buscar Liga</h2>
+    <form>
+      <div class="form-group">
+        <label for="search-league">Nombre de la Liga</label>
+        <input type="text" class="form-control" id="search-league" placeholder="Ingresa el nombre de la liga">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Buscar Liga</button>
+    </form>
+  </div>
+</div>
+
+<!-- Sección para Crear Liga -->
+<div class="container mt-5">
+  <div class="container-custom shadow-lg">
+    <h2>Crear Liga</h2>
+    <form>
+      <div class="form-group">
+        <label for="league-name">Nombre de la Liga</label>
+        <input type="text" class="form-control" id="league-name" placeholder="Ingresa el nombre de la liga">
+      </div>
+      <div class="form-group">
+        <label for="players">Agregar Jugadores</label>
+        <input type="text" class="form-control" id="players" placeholder="Ingresa los nombres de los jugadores, separados por comas">
+      </div>
+      <button type="submit" class="btn btn-secondary btn-block mt-4">Crear Liga</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

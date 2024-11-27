@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fantasy Football - Uno contra Uno</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+</head>
+<body>
+
+<!-- Información de los Usuarios -->
+<div class="user-info">
+  <h1>Fantasy Football: Uno contra Uno</h1>
+  <div class="row">
+    <div class="col">
+      <h2><strong>Usuario: </strong>Yo</h2>
+    </div>
+    <div class="col">
+      <h2><strong>Contrincante: </strong>Rival</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Contenedor del Juego -->
+<div class="container">
+  <div class="game-container">
+
+    <!-- Mi Equipo -->
+    <div class="team-container">
+      <h2>Mis Jugadores</h2>
+      
+    </div>
+
+    <!-- Equipo del Contrincante -->
+    <div class="team-container">
+      <h2>Jugadores del Contrincante</h2>
+
+      <!-- QB del Contrincante -->
+      <div class="player-card">
+        <img src="https://e0.365dm.com/23/09/2048x1152/skysports-aaron-rodgers-new-york-jets_6282184.jpg?20230912120237" alt="Aaron Rodgers">
+        <div class="player-info">
+          <h5>Rodgers</h5>
+          <p>Posición: QB</p>
+        </div>
+      </div>
+
+      <!-- WR del Contrincante -->
+      <div class="player-card">
+        <img src="https://storage.googleapis.com/static.elsoldemexico.com.mx/elesto/2024/04/Stefon-Diggs-pasaria-a-los-Houston-Texans.jpg" alt="Stefon Diggs">
+        <div class="player-info">
+          <h5>Diggs</h5>
+          <p>Posición: WR</p>
+        </div>
+      </div>
+
+      <!-- RB del Contrincante -->
+      <div class="player-card">
+        <img src="https://cloudfront-us-east-2.images.arcpublishing.com/reuters/CZKQHYH3JJNSFKMEZ7PWHNU53U.jpg" alt="Nick Chubb">
+        <div class="player-info">
+          <h5>Nick Chubb</h5>
+          <p>Posición: RB</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección de Puntos -->
+  <div class="points-container">
+    <span><strong>Mis Puntos: </strong>75</span>
+    <span><strong>Puntos del Contrincante: </strong>70</span>
+  </div>
+</div>
+
+
+<!-- Apartado de "Draftear" Jugadores -->
+<div class="container mt-5">
+  <h2 class="text-center">Draftear </h2>
+
+  <!-- Jugadores -->
+  <div class="row">
+    
+    <div class="col-md-4" *ngFor="let player of players; let i = index">
+      <h5 class="player-name">{{ player.name }}</h5>
+      <div class="player-card">
+        <img [src]="player.imageUrl" [alt]="player.name">
+        <p class="player-position">{{ player.position }}</p>
+        <button class="btn btn-primary btn-select">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts de Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

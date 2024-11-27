@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Patrick Mahomes",
+      "position": "QB",
+      "imageUrl": "https://media.cnn.com/api/v1/images/stellar/prod/cnne-1557830-gettyimages-1968192885-1.jpg"
+    },
+    {
+      "name": "Davante Adams",
+      "position": "WR",
+      "imageUrl": "https://media.pff.com/2022/04/USATSI_17596959_168392742_lowres.jpg?w=1200&h=675"
+    },
+    {
+      "name": "Derrick Henry",
+      "position": "RB",
+      "imageUrl": "https://d.newsweek.com/en/full/2300198/titans-running-back-derrick-henry.jpg?w=1200&f=dccecb2eec8dcf11a33a40909f2d71a2"
+    }
+  ]

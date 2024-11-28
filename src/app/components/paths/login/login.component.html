@@ -1,72 +1,18 @@
-<!--src/app/components/paths/login/login.component.html-->
 <!DOCTYPE html>
+<!--src/app/components/paths/login/login.component.html-->
+
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio de Sesión - Fantasy NFL</title>
+  <title>Inicio de Sesión - Fantasy</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-
-    .background-image {
-      background-image: url('https://media.cnn.com/api/v1/images/stellar/prod/220121132727-20210121-football-unity-gfx.jpg?q=w_1110,c_fill');
-      background-size: cover;
-      background-position: center;
-      padding: 50px 20px;
-      border-radius: 10px;
-      color: rgba(255, 255, 255, 0.795);
-      text-align: center;
-    }
-
-    .login-container {
-      max-width: 400px;
-      margin: 30px auto;
-      padding: 15px;
-      background-color: #fff;
-      border-radius: 10px;
-    }
-
-    .login-container h2 {
-      font-size: 1.5rem;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .form-group input {
-      border-radius: 25px;
-      padding: 10px;
-    }
-
-    .btn-primary, .btn-secondary {
-      border-radius: 25px;
-      padding: 10px 30px;
-      margin-top: 10px;
-    }
-
-    .card-img-overlay {
-      color: white;
-      border-radius: 10px;
-    }
-
-    .login-banner {
-      background-image: url('https://media.cnn.com/api/v1/images/stellar/prod/220121132727-20210121-football-unity-gfx.jpg?q=w_1110,c_fill');
-      background-size: cover;
-      background-position: center;
-      height: 50vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  </style>
 </head>
 <body>
 
 <!-- Banner -->
 <div class="background-image">
-  <h1 class="display-4 font-weight-bold">Inicia Sesión en NFL Fantasy</h1>
+  <h1 class="display-4 font-weight-bold">Inicia Sesión en Fantasy</h1>
 </div>
 
 <!-- Formulario de Inicio de Sesión -->
@@ -84,6 +30,8 @@
       </div>
       <button type="submit" class="btn btn-primary btn-block mt-4">Iniciar Sesión</button>
       <button type="button" class="btn btn-secondary btn-block mt-2">Iniciar Sesión Admin</button>
+      <button type="button" class="btn btn-danger btn-block mt-2" (click)="loginWithGoogle()">Iniciar Sesión con Google</button>
+
     </form>
   </div>
 </div>

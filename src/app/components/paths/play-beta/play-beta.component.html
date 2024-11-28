@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fantasy Sports - Uno contra Uno</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Información de los Usuarios -->
+  <div class="user-info">
+    <h1>Fantasy Sports: Uno contra Uno</h1>
+    <div class="row">
+      <div class="col">
+        <h2><strong>Mi equipo </strong></h2>
+      </div>
+      <div class="col">
+        <h2><strong>Equipo enemigo </strong></h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor del Juego -->
+  <div class="container">
+    <div class="game-container">
+
+      <!-- Mi Equipo -->
+      <div class="team-container">
+        <h2>Mis Jugadores</h2>
+        <div class="player-card" *ngFor="let player of myTeam">
+          <img [src]="player.image" [alt]="player.name">
+          <h5 class="player-name">{{ player.name }}</h5>
+          <p class="player-position">{{ player.position }}</p>
+          <button class="btn btn-danger btn-sm" (click)="removeFromMyTeam(player)">
+            <i class="bi bi-trash"></i> Eliminar
+          </button>
+        </div>
+      </div>
+
+      <!-- Equipo del Contrincante -->
+      <div class="team-container">
+        <h2>Jugadores del Contrincante</h2>
+        <div class="player-card" *ngFor="let player of players.slice(-3)">
+          <img [src]="player.image" [alt]="player.name">
+          <div class="player-info">
+            <h5>{{ player.name }}</h5>
+            <p class="player-position">{{ player.position }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Puntos -->
+    <div class="points-container bg-light p-4 rounded shadow text-center">
+      <div class="mb-3">
+        <span class="d-block fs-5"><strong>Mis Puntos:</strong> <span class="text-success">{{ getTotalPoints()
+            }}</span></span>
+        <span class="d-block fs-5"><strong>Puntos del Contrincante:</strong> <span class="text-danger">0 (por
+            manco)</span></span>
+      </div>
+      <button class="btn btn-primary btn-lg mt-2" (click)="saveMyTeam()">
+        Guardar equipo
+      </button>
+    </div>
+
+
+  </div>
+
+
+
+  <!-- Apartado de "Draftear" Jugadores -->
+  <div class="container mt-5">
+    <h2 class="text-center">Draftear </h2>
+
+    <!-- Jugadores -->
+    <div class="row">
+      <div class="col-md-4" *ngFor="let player of players; let i = index">
+        <h5 class="player-name">{{ player.name}}</h5>
+        <div class="player-card">
+          <img [src]="player.image" [alt]="player.name">
+          <p class="player-position">{{ player.position }}</p>
+          <button class="btn btn-primary btn-select" (click)="addToMyTeam(player)">Agregar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts de Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

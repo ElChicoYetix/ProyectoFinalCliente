@@ -2,12 +2,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const passport = require('./config/passport');
+
 require('dotenv').config();
 
 const userRoutes = require('./routes/userRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 3000;
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -20,6 +22,9 @@ app.use(express.json());
 
 // Rutas
 app.use('/api/users', userRoutes);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Iniciar el servidor
 app.listen(PORT, () => {

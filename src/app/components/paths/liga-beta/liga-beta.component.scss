@@ -1,0 +1,37 @@
+body {
+    background-color: #f8f9fa;
+  }
+
+  .background-image {
+    background-image: url('https://assets.editorial.aetnd.com/uploads/2014/06/soccer-ball-gettyimages-sb10066898ab-001.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.795);
+    text-align: center;
+  }
+
+  .container-custom {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  h2, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form-group input {
+    border-radius: 25px;
+    padding: 10px;
+  }
+
+  .btn-primary, .btn-secondary {
+    border-radius: 25px;
+    padding: 10px 30px;
+    margin-top: 10px;
+  }

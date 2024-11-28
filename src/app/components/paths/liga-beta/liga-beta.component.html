@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ligas - Sports Fantasy</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Banner -->
+<div class="background-image">
+  <h1 class="display-4 font-weight-bold">Gestiona tus Ligas</h1>
+</div>
+
+<!-- Sección para Crear Liga -->
+<div class="container mt-5">
+  <div class="container-custom shadow-lg">
+    <h2>Crear Liga</h2>
+    <form [formGroup]="createLeagueForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="league-name">Nombre de la Liga</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="league-name" 
+          formControlName="name" 
+          placeholder="Ingresa el nombre de la liga"
+          [ngClass]="{'is-invalid': createLeagueForm.get('name')?.invalid && createLeagueForm.get('name')?.touched}">
+        <div *ngIf="createLeagueForm.get('name')?.invalid && createLeagueForm.get('name')?.touched" class="invalid-feedback">
+          El nombre de la liga es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="country">País</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="country" 
+          formControlName="country" 
+          placeholder="Ingresa el país"
+          [ngClass]="{'is-invalid': createLeagueForm.get('country')?.invalid && createLeagueForm.get('country')?.touched}">
+        <div *ngIf="createLeagueForm.get('country')?.invalid && createLeagueForm.get('country')?.touched" class="invalid-feedback">
+          El país es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="weeks">Número de Semanas de Juego</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="weeks" 
+          formControlName="weeks" 
+          placeholder="Ingresa el número de semanas"
+          [ngClass]="{'is-invalid': createLeagueForm.get('weeks')?.invalid && createLeagueForm.get('weeks')?.touched}">
+        <div *ngIf="createLeagueForm.get('weeks')?.invalid && createLeagueForm.get('weeks')?.touched" class="invalid-feedback">
+          Debes ingresar al menos 1 semana.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="players">Número de Jugadores a Draftear (entre 5 y 11)</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="players" 
+          formControlName="players" 
+          placeholder="Ingresa el número de jugadores"
+          [ngClass]="{'is-invalid': createLeagueForm.get('players')?.invalid && createLeagueForm.get('players')?.touched}">
+        <div *ngIf="createLeagueForm.get('players')?.invalid && createLeagueForm.get('players')?.touched" class="invalid-feedback">
+          Debes ingresar un número entre 5 y 11.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block mt-4">Crear Liga</button>
+    </form>
+    
+    <div *ngIf="leagueId" class="mt-3">
+      <p>Liga creada con ID: <strong>{{ leagueId }}</strong></p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+body {
+    background-color: #f8f9fa;
+  }
+
+  .background-image {
+    background-image: url('https://media.cnn.com/api/v1/images/stellar/prod/220121132727-20210121-Sports-unity-gfx.jpg?q=w_1110,c_fill');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+  }
+
+  .login-container {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  .login-container h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form-group input {
+    border-radius: 25px;
+    padding: 10px;
+  }
+
+  .btn-primary, .btn-secondary {
+    border-radius: 25px;
+    padding: 10px 30px;
+    margin-top: 10px;
+  }
+
+  .card-img-overlay {
+    color: white;
+    border-radius: 10px;
+  }
+
+  .login-banner {
+    background-image: url('https://needhamsoccer.com/wp-content/uploads/2021/08/SoccerBall_fall.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

@@ -3,7 +3,7 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const registerUser = async (req, res) => {
+const registerUser = async (req, res) => { 
   const { name, email, password } = req.body;
   
   try {
@@ -25,7 +25,7 @@ const registerUser = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     // Incluir el mensaje de éxito en la respuesta JSON
-    res.status(201).json({ message: 'Usuario creado', token });
+    res.status(201).json({ message: 'Usuario creado', token, user: { name: user.name, email: user.email } });
   } catch (error) {
     res.status(500).json({ message: 'Error al registrar el usuario' });
   }
@@ -47,7 +47,7 @@ const loginUser = async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    res.json({ token });
+    res.json({ token, user: { name: user.name, email: user.email } });
   } catch (error) {
     res.status(500).json({ message: 'Error al iniciar sesión' });
   }

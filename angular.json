@@ -62,9 +62,6 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "proxyConfig": "proxy.conf.json"
-          },
           "configurations": {
             "production": {
               "buildTarget": "ProyectoFinal:build:production"
@@ -97,6 +94,17 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "e2e": {
+          "builder": "playwright-ng-schematics:playwright",
+          "options": {
+            "devServerTarget": "ProyectoFinal:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ProyectoFinal:serve:production"
+            }
           }
         }
       }
